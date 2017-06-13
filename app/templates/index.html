@@ -1,0 +1,16 @@
+
+{% load render_bundle from webpack_loader %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Django-ReactJS-15-Setup</title>
+</head>
+<body>
+<div id="app"> Loading...</div>
+{% render_bundle 'main' %}
+</body>
+</html>
