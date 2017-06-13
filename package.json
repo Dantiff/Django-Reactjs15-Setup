@@ -11,9 +11,12 @@
     "url": "https://github.com/Dantiff/Django-Reactjs15-Setup.git"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.react frontend",
-    "dev": "cross-env NODE_ENV=development node server.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "test": "NODE_ENV=production mocha './tests/**/*.spec.js' --compilers js:babel-core/register",
+    "clean": "rimraf dist",
+    "start": "node devServer.js",
+    "tunnel": "browser-sync start --proxy localhost:7770 --tunnel wesbos"
   },
   "dependencies": {
     "babel-core": "^6.7.7",
@@ -64,5 +67,9 @@
     "webpack-dev-server": "^2.1.0-beta.9"
   },
   "devDependencies": {
+    "expect": "^1.18.0",
+    "expect-jsx": "^2.5.1",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^15.0.2"
   }
 }
